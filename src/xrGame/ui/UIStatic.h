@@ -54,10 +54,23 @@ public:
 	void SetTextureRect_script(Frect* pr) { m_UIStaticItem.SetTextureRect(*pr); }
 	const Frect* GetTextureRect_script() { return &m_UIStaticItem.GetTextureRect(); }
 
-	void SetHeadingPivot(const Fvector2& p, const Fvector2& offset, bool fixedLT)
+	void SetHeadingPivotOffset(const Fvector2& p, const Fvector2& offset, bool fixedLT)
 	{
-		m_UIStaticItem.SetHeadingPivot(p, offset, fixedLT);
+		m_UIStaticItem.SetHeadingPivotOffset(p, offset, fixedLT);
 	}
+
+	void SetHeadingPivot(const Fvector2& p)
+	{
+		m_UIStaticItem.vHeadingPivot = p;
+	}
+
+	void SetHeadingOffset(const Fvector2& offset)
+	{
+		m_UIStaticItem.vHeadingOffset = offset;
+	}
+
+	Fvector2 GetHeadingPivot() const { return m_UIStaticItem.vHeadingPivot; }
+	Fvector2 GetHeadingOffset() const { return m_UIStaticItem.vHeadingOffset; }
 
 	void ResetHeadingPivot() { m_UIStaticItem.ResetHeadingPivot(); }
 	virtual void SetTextureOffset(float x, float y) { m_TextureOffset.set(x, y); }

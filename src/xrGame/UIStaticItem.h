@@ -70,7 +70,7 @@ public:
 
 	IC Fvector2 GetSize() { return vSize; }
 
-	void SetHeadingPivot(const Fvector2& p, const Fvector2& offset, bool fixedLT);
+	void SetHeadingPivotOffset(const Fvector2& p, const Fvector2& offset, bool fixedLT);
 	void ResetHeadingPivot();
 	IC bool GetFixedLTWhileHeading() const { return !!uFlags.test(flFixedLTWhileHeading); }
 	Fvector2 GetHeadingPivot() { return vHeadingPivot; }
