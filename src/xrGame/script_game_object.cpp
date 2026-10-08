@@ -1644,3 +1644,19 @@ void CScriptGameObject::ResetShaderTexture(int id, bool bHud)
 
 	reset_shader_tex(k->dcast_RenderVisual(), id);
 }
+
+bool CScriptGameObject::IsPending()
+{
+	CHudItem* itm = smart_cast<CHudItem*>(&object());
+	if (!itm) return false;
+
+	return itm->IsPending();
+}
+
+void CScriptGameObject::SetPending(bool pending)
+{
+	CHudItem* itm = smart_cast<CHudItem*>(&object());
+	if (!itm) return;
+
+	itm->SetPending(pending);
+}
