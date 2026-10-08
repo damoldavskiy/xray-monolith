@@ -187,6 +187,9 @@
     }
 
     game {
+        bool model_prefetched(string name) // Query the model cache without loading a missing model.
+        table list_lanims() // Array of light-animation names.
+        bool top_input_receiver() // Whether a UI dialog currently owns input.
         Fvector2 world2ui(Fvector pos, bool hud = false, bool allow_offscreen = false)
         Fvector2 world2ui_with_depth(Fvector pos, bool hud = false, bool allow_offscreen = false)
         function ui2world(Fvector2 pos) -> Fvector result, u16 object_id
@@ -227,7 +230,18 @@
         property dest_position          // Fvector
     }
 
+    bool GetCursorVisible()
+    void SetCursorVisible(bool visible)
+    object_factory get_object_factory()
+    class object_factory {
+        number script_clsid(string class_id) // Engine CLASS_ID string -> registered script class ID.
+    }
+    class CUICheckButton {
+        void SetVisualState(number state) // -1 automatic, 0 enabled, 1 disabled, 2 highlighted, 3 touched.
+    }
+
     class CUIWindow {
+        void Update() // Run the window update explicitly.
         CUIWindow FindChild()
 
 		CUI3tButton cast_3tButton()
@@ -272,10 +286,12 @@
     }
     
     class CUIGameCustom {
+        void TalkMenuSetVisible(bool visible) // Change talk-menu visibility.
         CUIWindow GetWindow() // get_hud():GetWindow()
     }
 
     class CUIProgressBar {
+        void SetProgressPosInstant(float value) // Clamp and update immediately, without interpolation.
         CUIStatic GetProgressStatic()
 		bool GetSnapNoDelay() Get the status of "SnapNoDelay"
 		void SetSnapNoDelay() Enable: progress visual displays progress position instantly. No longer progressively increase/descrease until meeting the new position.
@@ -283,6 +299,11 @@
     }
 
     class CUIStatic {
+        void SetHeadingPivotOffset(Fvector2 pivot, Fvector2 offset, bool fixedLT)
+        void SetHeadingPivot(Fvector2 pivot)
+        Fvector2 GetHeadingPivot()
+        void SetHeadingOffset(Fvector2 offset)
+        Fvector2 GetHeadingOffset()
     	void SetColorAnimation(string name, number flags, float delay)
 		void ResetColorAnimation()
 		void RemoveColorAnimation()
@@ -463,6 +484,7 @@
     }
 
     level {
+        bool is_demo_record() // Whether the demo camera effector is active.
         float get_music_volume()
         void set_music_volume(float)
 
@@ -714,6 +736,12 @@
     }
 
     class game_object {
+        xrTime game_death_time()
+        Fvector get_actor_direction() // Camera yaw, pitch and roll in radians.
+        Fmatrix bone_transform(number bone_id, bool hud, bool previous)
+        Fmatrix bone_transform(string bone_name, bool hud, bool previous)
+        // previous selects the stored previous HUD model transform, with the current bone pose.
+        // World models retain their current transform; existing shorter overloads are unchanged.
 		// Class casting
 		function cast_Knife()
         function get_projector()

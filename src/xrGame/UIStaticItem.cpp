@@ -55,7 +55,7 @@ void CUIStaticItem::ResetHeadingPivot()
 	uFlags.set(flFixedLTWhileHeading,FALSE);
 }
 
-void CUIStaticItem::SetHeadingPivot(const Fvector2& p, const Fvector2& offset, bool fixedLT)
+void CUIStaticItem::SetHeadingPivotOffset(const Fvector2& p, const Fvector2& offset, bool fixedLT)
 {
 	vHeadingPivot = p;
 	vHeadingOffset = offset;

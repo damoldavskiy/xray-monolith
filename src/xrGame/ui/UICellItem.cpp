@@ -103,7 +103,7 @@ void CUICellItem::Update()
 	if (Heading())
 	{
 		SetHeading(90.0f * (PI / 180.0f));
-		SetHeadingPivot(Fvector2().set(0.0f, 0.0f), Fvector2().set(0.0f, GetWndSize().y), true);
+		SetHeadingPivotOffset(Fvector2().set(0.0f, 0.0f), Fvector2().set(0.0f, GetWndSize().y), true);
 	}
 	else
 		ResetHeadingPivot();

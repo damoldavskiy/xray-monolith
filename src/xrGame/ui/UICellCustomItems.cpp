@@ -284,7 +284,7 @@ CUIStatic* CUIInventoryCellItem::InitLayer(CUIStatic* s, LPCSTR section, Fvector
 		s->SetHeading(GetHeading());
 		Fvector2 offs;
 		offs.set(0.0f, s->GetWndSize().y);
-		s->SetHeadingPivot(Fvector2().set(0.0f, 0.0f), /*Fvector2().set(0.0f,0.0f)*/offs, true);
+		s->SetHeadingPivotOffset(Fvector2().set(0.0f, 0.0f), /*Fvector2().set(0.0f,0.0f)*/offs, true);
 	}
 
 	return s;
@@ -624,7 +624,7 @@ void CUIWeaponCellItem::InitAddon(CUIStatic* s, LPCSTR section, Fvector2 addon_o
 		s->SetHeading(GetHeading());
 		Fvector2 offs;
 		offs.set(0.0f, s->GetWndSize().y);
-		s->SetHeadingPivot(Fvector2().set(0.0f, 0.0f), /*Fvector2().set(0.0f,0.0f)*/offs, true);
+		s->SetHeadingPivotOffset(Fvector2().set(0.0f, 0.0f), /*Fvector2().set(0.0f,0.0f)*/offs, true);
 	}
 }
 
